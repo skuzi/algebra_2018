@@ -1,8 +1,10 @@
 # Шпаргалка курса по алгебре. Шаблон взят преподавателя.  
 
 Распределение на билеты
-https://docs.google.com/spreadsheets/d/1BcCy78TaO-XUTQD2uK34_XdILLduukk2Lv42ZB2bs6g/edit?usp=sharing
-
+https://docs.google.com/spreadsheets/d/1BcCy78TaO-XUTQD2uK34_XdILLduukk2Lv42ZB2bs6g/edit?usp=sharing  
+Проблемы/баги/вопросы  
+https://docs.google.com/spreadsheets/d/1NqEpdZ97o-UPN2Y3gaAeR76dY-22jARAieGBTB7WDJQ/edit?usp=sharing  
+  
 
 1) Создаёте fork данного репозитория  
 2) Клонируете его себе на компьютер и создаёте новую ветку с адекватным названием (своей фамилией, например)  

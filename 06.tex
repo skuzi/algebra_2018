@@ -1,1 +1,122 @@
-6) Метод главных компонент.
+{\bf 6)} Метод главных компонент.
+
+Шпаргалка: TODO
+
+Пусть $V = \mathbb{R}^n$, $x_1,\ldots, x_s \in V$.
+
+Хочется найти афинное подпространство $L\le V$, $dim\,L = k$ такое, что сумма квадратов расстояний от $x_i$ до $L$ (вообще, корень из суммы квадратов, но на него забьём) минимальна.
+
+{\bf Напоминание 1.} $\rho(x, L) = ||pr_{L^{\perp}}(x)||$
+
+{\bf Напоминание 2 (теорема Пифагора).} $||pr_{L^{\perp}}(x)||^2 + ||pr_L(x)||^2 = ||x||^2$
+
+{\bf Напоминание 3.} $e_1,\ldots,e_k$~--- базис $U$ (подпространства $V$). Тогда $pr_U(x)=\sum\limits_{i=1}^k\frac{\langle x, e_i\rangle}{\langle e_i, e_i\rangle}e_i$
+
+{\bf Вывод алгоритма.}
+
+$L = L_0 + a$, где $L_0$~--- линейное. 
+
+Сначала найдём $a$.
+
+\thmm{Оптимально взять $a=\frac{1}{s}\sum\limits_{i=1}^s x_i$}
+
+\proofname
+
+Если из каждого $x_i$ вычесть $a$, то все расстояния нужно будет считать до $L_0$.
+
+$S = \sum\limits_{i = 1}^s (\rho(x_i-a, L_0))^2 = \sum\limits_{i = 1}^s ||pr_{L_0^{\perp}}(x_i-a)||^2$
+
+Возьмём ортонормированный базис $V$ $u_i$ такой, что $u_1,\ldots, u_k$ образуют базис $L_0$, а $u_{k+1},\ldots,u_n$~--- дополнение до базиса.
+
+$L_0^\perp = \langle u_{k+1},\ldots,u_n\rangle$. 
+
+$pr_{L_0^{\perp}}(x_j-a) = \sum\limits_{i = k + 1}^n \frac{\langle x_j - a, u_i\rangle}{\langle u_i, u_i\rangle}u_i = \sum\limits_{i = k + 1}^n \langle x_j - a, u_i\rangle u_i$ (так как $u_i$ ортонормированны, $\langle u_i, u_i\rangle = 1$)
+
+$||pr_{L_0^{\perp}}(x_j-a)||^2 = \langle\sum\limits_{i = k + 1}^n \langle x_j - a, u_i\rangle u_i, \sum\limits_{i = k + 1}^n \langle x_j - a, u_i\rangle u_i\rangle = \sum\limits_{i = k + 1}^n \langle x_j - a, u_i\rangle^2$ (выживают только слагаемые с одинаковыми $u_i$, опять же, из-за ортонормированности)
+
+$\langle x_j - a, u_i\rangle$ равняется $i$-ой координате $x_j - a$. А она, в свою очередь, равна $x_{j, i} - a_i$
+
+$||pr_{L_0^{\perp}}(x_j-a)||^2 = \sum\limits_{i = k + 1}^n (x_{j, i} - a_i)^2$
+
+Мы минимизируем сумму квадратов расстояний по всем $x$. То есть:
+
+$\sum\limits_{j = 1}^s \sum\limits_{i = k + 1}^n (x_{j, i} - a_i)^2$
+
+Продифференцируем по $a_i$ и найдём точку минимума:
+
+$s\cdot 2a_i -2\sum\limits_{j=1}^s x_{j, i} = 0$
+
+$a_i = \frac{1}{s} \sum\limits_{j=1}^s x_{j, i}$
+
+Проделав то же самое по всем $i$, получим $a = \frac{1}{s} \sum\limits_{j=1}^s x_j$. Это и хотели.
+
+{\bf Поиск подходящего линейного подпространства $L_0$}.
+
+Мы хотим минимизировать сумму квадратов расстояний. Это (по теореме Пифагора (напоминание 2)) то же самое, что максимизировать сумму квадратов проекций на $L$ (так как квадрат нормы $x$ у нас фиксирован).
+
+$u_i$~--- ортонормированный базис $L_0$.
+
+$S = \sum\limits_{i = 1}^s ||pr_{L_0}(x_i)||^2$
+
+$pr_L(x_j) = \sum\limits_{i = 1}^k \langle x_j, u_i\rangle u_i$ (по тем же соображениям, что и в прошлом пункте).
+
+$S = \sum\limits_{i = 1}^s\langle\sum\limits_{i = 1}^k \langle x_j, u_i\rangle u_i, \sum\limits_{i = 1}^k \langle x_j, u_i\rangle u_i\rangle = \sum\limits_{i = 1}^s\sum\limits_{j = 1}^k \langle x_i, u_j\rangle^2 = \sum\limits_{j = 1}^k\sum\limits_{i = 1}^s \langle x_i, u_j\rangle^2$ ($u$-шки ушли, так как базис ортонормированный).
+
+Определим матрицу $X$ следующим образом:
+$$
+X = \pmat
+x_1^T\\
+x_2^T\\
+\vdots\\
+x_s^T
+\epmat
+$$
+
+Это матрица размера $s\times n$
+
+Посмотрим на результат $X\cdot u_j$:
+$$
+A=\pmat
+\langle x_1, u_j\rangle\\
+\vdots\\
+\langle x_s, u_j\rangle
+\epmat 
+$$
+
+Заметим, что если мы запишем $u_j^T\cdot X^T$, то получим $A^T$.
+
+$A^T\cdot A = u_j^TX^TXu_j = \sum\limits_{i = 1}^s\langle x_i, u_j\rangle^2$.
+
+То есть, это значение квадратичной формы с матрицей $X^TX$ на векторе $u_j$.
+
+$q(u) = u^TX^TXu$
+
+Теперь $S = \sum\limits_{i = 1}^k q(u_i) = Tr\, q(x)|_{L_0}$
+
+По замечанию из неравенства на след (см. предыдущий билет) $S = Tr\,q(x)|_{L_0} \le \sum\limits_{i = 1}^k \lambda_i$. Но мы максимизируем $S$ и знаем, на каком подпространстве достигается $\sum\limits_{i = 1}^k \lambda_i$ (это подпространство $\langle v_1,\ldots, v_k\rangle$, где $v_i$~--- собственный вектор, соотвествующий собственному числу $\lambda_i$).
+
+Таким образом, $L_0 = \langle v_1,\ldots,v_k\rangle$, где $v_i$~--- собственный вектор, соответствующий $i$-ому по убыванию собственному числу матрицы $X^TX$.
+
+{\bf Алгоритм.}
+
+Ищем афинное подпространство $L = L_0 + a$.
+
+$L_0$~--- линейное, $dim\,L_0 = k$
+
+$a = \frac{1}{s}\sum\limits_{i = 0}^s x_i$
+
+Из каждого $x_i$ вычли $a$.
+
+Для новых векторов $x$ построили матрицу 
+$$
+X=\pmat
+x_1^T\\
+x_2^T\\
+\vdots\\
+x_s^T
+\epmat
+$$
+
+Нашли матрицу $C = X^TX$. Нашли её собственные числа $\lambda_1\ge\lambda_2\ge\ldots\ge\lambda_n$ и собственные вектора $v_1,\ldots, v_n$, им соответствующие.
+
+$L_0 = \langle v_1,\ldots,v_k\rangle$

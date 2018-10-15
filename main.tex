@@ -1,0 +1,175 @@
+\documentclass[10pt,a4paper,oneside]{book}
+\usepackage[a4paper,includeheadfoot,top=10mm,bottom=10mm,left=10mm,right=10mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amsthm,amssymb,amscd,array}
+\usepackage{latexsym}
+\usepackage{multicol} % нумерция в нескольких колонках
+\usepackage{graphicx} 
+%\usepackage{pdfsync}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows,backgrounds,patterns,matrix,shapes,fit,calc,shadows,plotmarks}
+\usepackage{hyperref} % гиперссылки
+\usepackage{cmap}       % Поддержка поиска русских слов в PDF (pdflatex)
+\usepackage{indentfirst}% Красная строка в первом абзаце
+\usepackage{misccorr}
+\usepackage{arydshln} % штрихованые линии в массивах
+\usepackage{mathtools} % выравнивание в матрицах
+\usepackage{ccaption}
+\usepackage{fancyhdr}
+\usepackage{comment}
+\usepackage{xcolor}
+\hypersetup{
+	colorlinks,
+	linkcolor={blue!50!black},
+	citecolor={blue!50!black},
+	urlcolor={red!80!black}
+}
+% цвета для ссылок
+
+
+\newtheorem{upr}{Упражнение}
+\newtheorem{predl}{Предложение}
+\newtheorem{komment}{Комментарий}
+\newtheorem{conj}{Гипотеза}
+\newtheorem{notation}{Обозначение}
+
+
+\theoremstyle{definition}
+\newtheorem{kit}{Кит}
+\newtheorem*{rem}{Замечание}
+\newtheorem{zad}{Задача}
+\newtheorem*{defn}{{\color{yellow!20!red} Определение}}
+\newtheorem*{fact}{Факт}
+\newtheorem{thm}{{\color{red!40!black} Теорема}}
+\newtheorem*{thmm}{Теорема}
+\newtheorem{lem}{Лемма}
+\newtheorem{cor}{Следствие}
+\newtheorem{utvr}{Утверждение}
+
+
+
+
+\renewcommand{\proofname}{Доказательство}
+\renewcommand{\mod}{\,\operatorname{mod}\,}
+\renewcommand{\Re}{\operatorname{Re}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\ovl}{\overline}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\K}{\operatorname{K_0}}
+\newcommand{\witt}{\operatorname{W}}
+\newcommand{\gw}{\operatorname{GW}}
+\newcommand{\coh}{\operatorname{H}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\cl}{\operatorname{Cl}}
+\newcommand{\Vol}{\operatorname{Vol}}
+\newcommand\tgg{\mathop{\rm tg}\nolimits}
+\newcommand\ccup{\mathop{\cup}}
+\newcommand{\id}{\operatorname{Id}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\chr}{\operatorname{char}}
+\newcommand{\rk}{\operatorname{rank}}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\Ker}{Ker}
+\newcommand{\im}{\operatorname{Im}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\tr}{\operatorname{Tr}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Stab}{\operatorname{Stab}}
+\newcommand{\orb}{\operatorname{\mathcal O}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Inn}{\operatorname{Inn}}
+\newcommand{\Out}{\operatorname{Out}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\SO}{\operatorname{SO}}
+\renewcommand{\O}{\operatorname{O}}
+\renewcommand{\U}{\operatorname{U}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Adj}{\operatorname{Adj}}
+\newcommand{\Disc}{\operatorname{Disc}}
+\newcommand{\cnt}{\operatorname{cont}}
+\newcommand{\Frob}{\operatorname{Frob}}
+
+\newcommand{\di}{\mathop{\,\scalebox{0.85}{\raisebox{-1.2pt}[0.5\height]{\vdots}}\,}}
+
+\newcommand{\ndi}{\mathop{\not\scalebox{0.85}{\raisebox{-1.2pt}[0.5\height]{\vdots}}\,}}
+\newcommand{\nequiv}{\not \equiv}
+\newcommand{\Nod}{\operatorname{\text{НОД}}}
+\newcommand{\Nok}{\operatorname{\text{НОК}}}
+\newcommand{\sgn}{\operatorname{sgn}}
+
+
+\def\llq{\textquotedblleft} 
+\def\rrq{\textquotedblright} 
+\def\exm{\noindent {\bf Примеры:}}
+
+
+\def\Cb{\ovl{C}}
+\def\ffi{\varphi}
+\def\pa{\partial}
+\def\V{\bf V}
+\def\La{\Lambda}
+\def\eps{\varepsilon}
+\def\del{\delta}
+\def\Del{\Delta}
+\def\A{\EuScript{A}}
+\def\lan{\left\langle }
+\def\ran{\right\rangle}
+\def\bar{\begin{array}}
+	\def\ear{\end{array}}
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\thrm{\begin{thm}}
+	\def\ethrm{\end{thm}}
+\def\dfn{\begin{defn}}
+	\def\edfn{\end{defn}}
+\def\lm{\begin{lem}}
+	\def\elm{\end{lem}}
+\def\zd{\begin{zad}}
+	\def\ezd{\end{zad}}
+\def\prdl{\begin{predl}}
+	\def\eprdl{\end{predl}}
+\def\crl{\begin{cor}}
+	\def\ecrl{\end{cor}}
+\def\rm{\begin{rem}}
+	\def\erm{\end{rem}}
+\def\fct{\begin{fact}}
+	\def\efct{\end{fact}}
+\def\enm{\begin{enumerate}}
+	\def\eenm{\end{enumerate}}
+\def\pmat{\begin{pmatrix}}
+	\def\epmat{\end{pmatrix}}
+\def\utv{\begin{utvr}}
+	\def\eutv{\end{utvr}}
+\def\bupr{\begin{upr}}
+	\def\eupr{\end{upr}}
+\def\cmm{\begin{comment}}
+	\def\ecmm{\end{comment}}
+
+\frenchspacing
+\righthyphenmin=2
+%\usepackage{floatflt}
+\captiondelim{. }
+
+
+
+
+\begin{document}
+	
+	Шпаргалка\\
+	\\
+	
+	\input{core.tex}	
+\end{document}

@@ -1,3 +1,17 @@
 \section{
 Внешняя алгебра и её свойства. Формулировка для симметрического случая.
 }
+
+
+
+\thrm[Внешняя алгебра] Рассмотрим пространства $\Lambda(V)=\oplus_{k=0}^{\dim V} \Lambda^k(V)$ и введём на нём структуру ассоциативной алгебры по правилу $ f\wedge g= Alt(f\otimes g)$. Если $f\in \Lambda^p(V)$, а $g \in \Lambda^q(V)$, то $f\wedge g=(-1)^{pq}g \wedge f$. Такое свойство называется градуированной коммутативностью. Более того, пара $v_1 \wedge \dots \wedge v_p , u_1\wedge \dots \wedge u_q$ переходит при этом умножении в $v_1 \wedge \dots \wedge v_p \wedge u_1\wedge \dots \wedge u_q$. Такое умножение называется внешним произведением тензоров.
+\proof Для этого удобно проверить тождество $Alt(Alt(T_1)\otimes T_2)= Alt(T_1\otimes T_2)= Alt(T_1 \otimes Alt(T_2))$, которое говорит, что внутри альтернирования можно свободно альтернировать сомножители не боясь ничего поменять. Действительно
+$$\frac{1}{k!}\sum_{\sigma \in S_{k}}\sgn(\sigma) Alt(T_1^{\sigma}\otimes T_2)=\frac{1}{k!}\sum_{\sigma \in S_{k}} \sgn^2(\sigma) Alt(T_1\otimes T_2)=Alt(T_1 \otimes T_2).$$
+Аналогично получается второе равенство. Теперь видно, что 
+$$Alt(v_1 \wedge \dots \wedge v_p \otimes u_1\wedge \dots \wedge u_q)=Alt(v_1 \otimes \dots \otimes v_p \otimes u_1\wedge \dots \wedge u_q)=Alt( v_1 \otimes \dots \otimes v_p \otimes u_1\otimes \dots \otimes u_q) =v_1 \wedge \dots \wedge v_p  \wedge u_1\wedge \dots \wedge u_q .$$
+Это показывает связь нашего определения умножения с ожидаемым определением. Ассоциативность теперь легко проверить на базисных элементах, как и градуированную коммутативность.
+\endproof
+\ethrm
+
+\thrm[Симметрическая алгебра] Рассмотрим пространство $\Sym(V)=\oplus_k \Sym^k(V)$. Тогда на нём можно ввести структуру ассоциативной коммутативной алгебры задав умножение как $ f*g= S(f\otimes g)$. Более того, указанная алгебра изоморфна алгебре многочленов.
+\ethrm

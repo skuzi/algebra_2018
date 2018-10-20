@@ -1,3 +1,97 @@
 \section{
  Канонические изоморфизмы для тензорного произведения.
 }
+
+Шпаргалка: TODO
+
+С понятием тензорного произведения связан ряд канонических отождествлений между разными на первый взгляд пространствами в духе изоморфизма $V \sim V^{**}$.
+
+\thrm 
+	Имеют место следующие естественные изоморфизмы: 
+	$$(U \otimes V) \otimes W \cong U \otimes V \otimes W \cong U \otimes (V \otimes W)$$
+	$$ U \otimes V \cong V \otimes U $$
+	$$ \Hom (U,V) \cong V \otimes U^*$$
+	$$ \Hom (U\otimes V,  W) \cong \Hom (U, \Hom (V,W))$$
+	$$(U \otimes V)^{*} \cong U^{*}\otimes V^{*}$$
+	\proof 
+		Наиболее интересная часть этой теоремы состоит в бескоординатном построении этих отображений. 
+
+		Первое. Докажем только первую часть, остальное аналогично.
+
+\begin{center}
+\begin{tikzpicture}
+\node (A) at (0, 1) {$U\times V\times W$};
+\node (B) at (0, 0) {$U\otimes V \otimes W$};
+\node (C) at (4, 1) {$(U\otimes V)\times W$};
+\node (D) at (4, 0) {$(U\otimes V)\otimes W$};
+\path[->,font=\scriptsize,>=angle 60]
+(A) edge node[above]{$A$} (C)
+(A) edge node[left]{$B$} (B)
+(C) edge node[right]{$C$} (D);
+\path[->,font=\scriptsize,>=angle 45, dashed]
+(B) edge node[below]{$D$}  (D);
+\end{tikzpicture}
+\end{center}
+
+		$C\circ A$ полилинейно $\Rightarrow$ $\exists!\ D$ линейное. $D$, заданное по правилу $u\otimes v\otimes w\to (u\otimes v)\otimes w$ подходит (если не верите, пропустите $(u, v, w)$ через $C\circ A$ и через $B$).
+
+		Это изоморфизм, потому что базис переводит в базис (а можно по-честному найти обратную стрелку и сказать, что их композиция тождественна).
+
+		Второй пункт считаю очевидным (там надо отобразиться из $V\times U$ в $U\times V$ и радоваться жизни).\\
+
+		Третий. Построим отображение $V\times U^{*} \to Hom (U,V)$ по правилу $$v\times f \to (u \to f(u)v).$$
+
+		Это соответствие полилинейно по $v,f$ поэтому есть диаграмма:
+
+\begin{center}
+\begin{tikzpicture}
+\node (A) at (0, 1) {$U^{*}\times V$};
+\node (B) at (0, 0) {$U^{*}\otimes V$};
+\node (C) at (4, 1) {$Hom(U, V)$};
+\path[->,font=\scriptsize,>=angle 60]
+(A) edge node[above]{$(f, v) \to (u\to f(u)v)$} (C)
+(A) edge node[left]{$B$} (B);
+\path[->,font=\scriptsize,>=angle 60, dashed]
+(B) edge node[above]{$A$} (C);
+\end{tikzpicture}
+\end{center}
+
+		$A$ линейное существует и единственно. $A:\ (f\otimes v)\to (u\to f(u)v)$ подходит.
+
+		Для изоморфизма осталось проверить, что базис переводит в базис. Пусть $e_i$ базис $V$, $f_j$ -- базис $U$, а $f^j$ базис $U^{*}$. Тогда $f^j\otimes e_i$ соответствует линейное отображение с матрицей 
+$$ e_{ij}= \bordermatrix{
+ & &j&& \cr
+ &0&\cdots&\cdots&0\cr
+ &\vdots&\ddots && \vdots\cr
+i&\vdots& 1 & \ddots& \vdots\cr
+ &0&\cdots& \cdots&0
+}$$
+		Такие линейные отображения образуют базис $\Hom(U,V)$.\\
+
+		Четвёртое. Рассмотрим отображение $ \Hom (U\otimes V,  W) \to \Hom (U, \Hom (V,W))$ заданное по правилу 
+		$$L_1:\ L \to (u \to (v \to L(u\otimes v))).$$
+		Правая часть линейна и по $u$ и по $v$, что значит, что это действительно отображение в $\Hom (U, \Hom (V,W))$.
+		Теперь построим обратное отображение: 
+		$$L_2:\ L \to (u\otimes v \to (L(u))(v))$$
+		Внутреннее отображение полилинейно по $u,v$ и поэтому дает корректное отображение из тензорного произведения в $W$. Они взаимно обратны:
+
+		{\bf WARNING!} Скорее всего есть доказательство лучше и короче, но я не очень умный.
+
+		$$Y: u\otimes v \to w_{uv}$$
+
+		$$L_1(Y)=u\to (v\to w_{uv})$$
+
+		$$((L_1(Y))(u) = v\to w_{uv}$$
+
+		$$(((L_1(Y))(u))(v) = w_{uv}$$
+
+		$$L_2(L_1(Y)) = u\otimes v \to w_{uv} = Y$$
+
+		Что и хотели.
+
+		Пятое. Построим отображение $U^{*}\otimes V^{*} \to (U \otimes V)^{*}$. Зададим его правилом
+		$$f\otimes g \to (u\otimes v \to f(u)g(v))$$
+		Отображение справа полилинейно по $u,v$ и даёт корректное отображение из тензорного произведения. Теперь вся правая часть полилинейна по $f,g$, и поэтому всё отображение задано. Если $u_i$ базис $U$ и $v_j$ базис $V$, то тензорёнок $u^i\otimes v^j$  переходит в элемент двойственного базиса к $\{u_i\otimes v_j\}$. Это показывает, что данное отображение есть изоморфизм. 
+
+	\endproof 
+\ethrm

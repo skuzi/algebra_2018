@@ -1,3 +1,15 @@
 \section{
  Внешняя степень линейного отображения. Универсальное свойство внешней степени.
 }
+
+\dfn Определим $k$-ую внешнюю степень линейного отображения $L\colon V \to W$ -- отображение $\Lambda^{k} L  \colon \Lambda^k V \to \Lambda^k W$ заданное на тензорах по правилу $v_1\wedge \dots \wedge v_k \to L v_1 \wedge \dots \wedge L v_k$. 
+\edfn
+
+Для того, чтобы показать корректность такого определения покажем следующую теорему:
+
+\thrm Рассмотрим отображение $g=Alt \circ i \colon V^{\times k} \to \Lambda^k(V)$. Тогда для любого полилинейного кососимметрического $h \colon V^{\times k} \to U$ существует единственное отображение $\hat{h} \colon \Lambda^k(V) \to U$, что $\hat{h} \circ g = h$.
+\proof Зафиксируем подходящее $h \colon V^{\times k} \to U$. Так как это полилинейное отображение, то есть линейное $\hat{\hat{h}}\colon V^{\otimes k} \to U$, что $\hat{\hat{h}} \circ i =h$. Покажем, что ограничение $\hat{\hat{h}}$ на $\Lambda^k(V)$ есть искомое отображение. Действительно $$\hat{\hat{h}}(v_1\wedge\dots\wedge v_k)=\hat{\hat{h}} \left(\frac{1}{k!} \sum_{\sigma \in S_k} \sgn(\sigma) v_{\sigma(1)}\otimes \dots \otimes v_{\sigma(k)} \right) =\frac{1}{k!} \sum_{\sigma \in S_k} \sgn(\sigma) h(v_{\sigma(1)},\dots,v_{\sigma(k)})=\frac{1}{k!}k!h(v_1,\dots,v_k)=h(v_1,\dots,v_k).$$
+
+Осталось показать единственность. Для этого заметим, что из условия  $\hat{h}$ однозначно задано на базисе $e_{\Gamma}$.
+\endproof
+\ethrm

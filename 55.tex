@@ -1,3 +1,16 @@
 \section{
  Вероятность встретить два взаимно простых числа.
 }
+
+Не имея возможности заниматься комплексным анализом остановимся на простых асимптотических свойствах арифметических функций и каких-нибудь тождествах с ними.
+
+Наша задача --- посчитать среднее значение функции Эйлера. Запишем сумму $S_n=\ffi(1)+\dots+\ffi(n)$ и посчитаем её асимптотику. Заметим, что $\ffi(n)=\sum_{d|n}\mu(d)\frac{n}{d}$. Получаем 
+$$\begin{aligned}
+S_n=&\sum_{k=1}^n\sum_{d|k}\mu(d)\frac{k}{d}=\sum_{dd'\leq n} \mu(d)d'=\\
+&=\sum_{d\leq n}\mu(d)\sum_{d'=1}^{[\frac{n}{d}]} d'=\frac{1}{2}\sum_{d\leq n}\mu(d)\left(\left[\frac{n}{d}\right]^2+\left[\frac{n}{d}\right]\right)=\\
+&=\frac{1}{2}\sum_{d\leq n}\mu(d)\left(\frac{n^2}{d^2}+O\left(\frac{n}{d}\right)\right)=\frac{1}{2}\sum_{d\leq n}\mu(d)\frac{n^2}{d^2}+O\left(n\sum \frac{1}{d}\right)=\\
+&=\frac{n^2}{2}\sum_{d\leq n}\frac{\mu(d)}{d^2}+O\left(n\log n\right)=\frac{n^2}{2}\sum_{d=1}^{\infty}\frac{\mu(d)}{d^2}+O(n)+O(n\log n)= \frac{3n^2}{\pi^2}+O(n\log n)
+\end{aligned}$$
+
+Заметим, что сумма $S_n$ это так же количество взаимно простых чисел $p,q$, что $1\leq p<q\leq n$. Количество вообще пар чисел, что  $1\leq p<q\leq n$ есть $\frac{1}{2}n(n+1)$. Отсюда получаем, что при больших $n$ вероятность выбрать два взаимно простых числа есть $\frac{6}{\pi^2}$.
+
